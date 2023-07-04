@@ -16,12 +16,12 @@ module.exports = defineConfig({
       errors: true
     },
     proxy: {
-      "/api": {
+      [process.env.VUE_APP_BASE_API]: {
         changeOrigin: true,
         secure: false,
-        target: "",
+        target: process.env.VUE_APP_CONSOLE_URL,
         pathRewrite: {
-          "^/api": ""
+          ["^" + process.env.VUE_APP_BASE_API]: ""
         }
       }
     }
